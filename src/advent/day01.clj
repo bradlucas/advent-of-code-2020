@@ -9,16 +9,10 @@
        (map #(Integer/parseInt %))))
 
 
-
-
-
 (defn part1 [file]
   (let [ints (read-integers file)
         combinations (combo/permuted-combinations ints 2)]
     (apply * (first (filter (fn [[a b]] (= 2020 (+ a b))) combinations )))))
-
-
-
 
 
 (defn part2 [file]
