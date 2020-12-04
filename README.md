@@ -5,6 +5,8 @@
 ## Completed Days
 
 - [Day01](src/advent/day01.clj)
+- [Day02](src/advent/day02.clj)
+- [Day03](src/advent/day03.clj)
 
 
 ## License
