@@ -52,3 +52,24 @@
   (->> (read-input file)
        (map (fn [[a b]] (seat (row a) (col b))))
        (apply max)))
+
+
+
+;; ----------------------------------------------------------------------------------------------------
+
+;; Some of the seats are missing from the front and the back
+;; Your seat should be the only missing boarding pass in your list
+
+(defn not-diff-by-1 [[a b]]
+  (not (= 1 (- b a))))
+
+(defn part2 [file]
+  (->> file
+       read-input
+       (map (fn [[a b]] (seat (row a) (col b))))
+       sort
+       (partition 2 1)
+       (filter not-diff-by-1)
+       first
+       first
+       inc))
