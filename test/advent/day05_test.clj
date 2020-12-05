@@ -7,8 +7,8 @@
   (let [expected 820]
     (is (= expected (part1 "day05-example.txt"))))
 
-  ;; (let [expected 0]
-  ;;   (is (= expected (part1 "day05.txt"))))
+  (let [expected 855]
+     (is (= expected (part1 "day05.txt"))))
   )
 
 
