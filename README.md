@@ -9,6 +9,7 @@
 - [Day03](src/advent/day03.clj)
 - [Day04](src/advent/day04.clj)
 - [Day05](src/advent/day05.clj)
+- [Day06](src/advent/day06.clj)
 
 
 ## License
