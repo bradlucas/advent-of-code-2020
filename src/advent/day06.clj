@@ -2,8 +2,8 @@
   (:require [advent.core :as c]
             [clojure.java.io :as io]
             [clojure.pprint :as pp]
+            [clojure.set :as set]
             [clojure.string :as str]))
-
 
 
 ;; Each group is separated by a blank line
@@ -27,3 +27,20 @@
       (map #(into #{} (str/replace % #"\n" "")))
       (map count)
       (apply +)))
+
+
+
+
+(defn unique-to-all-groups
+  "For each group reduce their answers to the set they all agree on"
+  [s]
+  (reduce set/intersection (map #(into #{} %) (str/split s #"\n"))))
+
+(defn part2
+  "For each group count answers if eeveryone in the group answered the same questions with a yes"
+  [file]
+  (->> file
+       read-input
+       (map #(unique-to-all-groups %))
+       (map count)
+       (apply +)))
