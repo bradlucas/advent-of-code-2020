@@ -4,10 +4,10 @@
 
 
 (deftest part1-test
-  (let [expected 0]
+  (let [expected 4]
     (is (= expected (part1 "day07-example.txt"))))
 
-  (let [expected 0]
+  (let [expected 257]
      (is (= expected (part1 "day07.txt"))))
   )
 
