@@ -12,9 +12,9 @@
    :dark-orange {:bright-white-bags 3 :muted-yellow 4}
    :bright-white {:shiny-gold 1}
    :muted-yellow {:shiny-gold 2 :faded-blue 9}
-   :shiny-gold  {:dark-olive 1  :vibrant-plum 2}
-   :dark-olive   {:faded-blue 3 :dotted-black 4}
-   :vibrant-plum  {:faded-blue 5 :dotted-black 6}
+   :shiny-gold {:dark-olive 1 :vibrant-plum 2}
+   :dark-olive {:faded-blue 3 :dotted-black 4}
+   :vibrant-plum {:faded-blue 5 :dotted-black 6}
    :faded-blue {}
    :dotted-black {}
    }
@@ -36,7 +36,7 @@
     {(make-keyword [a b])
      (Integer/parseInt num)}))
 
-(defn build-contents [s]
+                                      (defn build-contents [s]
   (if (= s "no other bags.")
     nil
     (into {} (map parse-contents (str/split s #",")))))
@@ -80,3 +80,18 @@
 (defn part1 [file]
   (let [graph (into {} (map parse-line (read-input file)))]
     (count (filter #(not (empty? %)) (map #(findpath graph % :shiny-gold)  (remove #(= :shiny-gold %) (keys graph)))))))
+
+
+;; ----------------------------------------------------------------------------------------------------
+;; Part 2
+;; Figure out how many bags are in a shiny gold bag
+
+
+;; @see https://github.com/zelark/AoC-2020/blob/master/src/zelark/aoc_2020/day_07.clj
+(defn walk [graph [bag n]]
+  (* n (apply + 1 (map #(walk graph %) (get graph bag)))))
+
+
+(defn part2 [file]
+  (let [graph (into {} (map parse-line (read-input file)))]
+    (dec (walk graph [:shiny-gold 1]))))
