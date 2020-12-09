@@ -10,6 +10,11 @@
   (with-open [rdr (io/reader (io/resource day))]
     (doall (line-seq rdr))))
 
+(defn read-numbers [day]
+  (->> day
+       (read-lines)
+       (filter #(not (empty? %)))
+       (map #(read-string %))))
 
 
 (defn -main
