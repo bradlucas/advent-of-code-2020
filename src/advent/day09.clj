@@ -27,3 +27,47 @@
 
 (defn part1 [file size]
   (find-bad-value (read-input file) size))
+
+
+
+;; ----------------------------------------------------------------------------------------------------
+;; part2
+;; find contiguous set of at least two numbers
+;; which has members add up to the number found in part 1
+;; to find the encryption weakness add the smallest and largests number in the range
+
+
+(defn sum-range [r]
+  (apply + r))
+
+(defn get-range [lst num]
+  ;; starting at the head of lst, return the largest set that adds up to num
+  ;; need at least two numbers
+  ;; if not possible return nill
+  (let [head (first lst)
+        lst (rest lst)]
+    (loop [lst lst
+           acc [head]]
+      (let [a (sum-range acc)
+            b (first  lst)
+            s (+ a b)]
+        (if (= s num)
+          (conj acc b)
+          (if (> s num)
+            nil
+            (recur (rest lst) (conj acc b))))))))
+
+(defn weakness [lst]
+  (+ (first lst)
+     (last lst)))
+
+(defn process-ranges [lst num]
+  (loop [lst lst]
+    (let [r (get-range lst num)]
+      (if r
+        (weakness (sort r))
+        (recur (rest lst))))))
+
+
+(defn part2 [file num]
+  (process-ranges (read-input file) num))
