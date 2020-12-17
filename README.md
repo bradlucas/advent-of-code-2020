@@ -20,6 +20,7 @@
 - [Day12 - Part 2](src/advent/day12_2.clj)
 - [Day13 - Part 1](src/advent/day13.clj)
 - [Day13 - Part 2](src/advent/day13_2.clj)
+- [Day14](src/advent/day14.clj)
 
 
 ## License
