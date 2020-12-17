@@ -8,7 +8,7 @@
 
 (defn read-lines [day]
   (with-open [rdr (io/reader (io/resource day))]
-    (doall (line-seq rdr))))
+    (doall (filter #(not (empty? %)) (line-seq rdr)))))
 
 (defn read-numbers [day]
   (->> day
