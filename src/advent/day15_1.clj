@@ -5,8 +5,8 @@
 
 
 ;; starting numbers
-(def example '(0,3,6))
-(def input '(0,3,1,6,7,5))
+(def example '(0,3,6))   ;; => 436 
+(def input '(0,3,1,6,7,5)) ;; => 852
 
 (defn find-pos [v lst]
   ;; (pp/pprint (format "find-pos %s %s" v lst))
