@@ -34,7 +34,11 @@
               (str/split #" or "))
         data (map parse-num-pairs d)
         r (build-ranges data)]
-    {:name (keyword n)
+    (pp/pprint n)
+    (pp/pprint d)
+    (pp/pprint data)
+    (pp/pprint r)
+    {:name (keyword (keyword (str/replace n " " "-")))
      :data r}))
 
 (defn parse-number-list [s]
@@ -56,3 +60,6 @@
         ticket (parse-ticket t)
         nearby (parse-nearby n)]
       (apply + (filter #(= nil (field-set %)) nearby))))
+
+
+
